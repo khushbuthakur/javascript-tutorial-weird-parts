@@ -1,0 +1,161 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript - Weird Parts</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="bg">
+        <h1>Syntax parser</h1>
+        <h3>A program that reads js code and translates it to computer readable language.</h3>
+        <br />
+    </div>
+
+    <div class="bg">
+        <h1>Lexical Environment</h1>
+        <h3>Where something sits physically in the code you write.<br />
+            Lexical Environment exists in which <b>where</b> you write something is important.
+
+            It basically tells where is it written and what surrounds it.
+
+            For example:
+            <pre>
+        <code>
+            var b = "b";
+
+            function abc(){
+                 var a = 'a';
+            }
+        </code>
+    </pre>
+            <h4> Here <b>variable b</b> is globally available but <b>variable a</b> is available only inside <b>function
+                    abc</b>
+                that is <b>lexical scope</b> of variable b</h4>
+        </h3>
+
+        <br />
+    </div>
+
+    <div class="bg">
+        <h1>Execution context</h1>
+        <h3><b>A wrapper to help manage the code that is running.</b>
+            There are lot of lexical environments but <b>which one is running currently</b> is managed by Execution
+            code.
+            <br />
+            It not only contains our code but it also contains things written by syntax parser to run code.
+        </h3>
+
+        <br>
+
+        <h1>Objects</h1>
+        <h3>Collection of name value pairs
+
+            <pre>
+            <code>
+                let address = {
+                    street : 'Main',
+                    apartment : {
+                        floor : 2,
+                        number : 100
+                    }
+                };
+            </code>
+        </pre>
+
+            Here address, street, apartment, floor and number are all name and respective to right their values.
+            Value can itself be another object.
+        </h3>
+    </div>
+
+
+    <div class="bg">
+        <h1>Execution context - GLOBAL</h1>
+        <h3>Javascript engine creates <b>Global Object</b> and variable <b>this</b> (setup in memory) whenever our code
+            runs because code
+            in wrapped inside <i>execution context</i></h3>
+    </div>
+
+    <div class="bg">
+        <h1>Hoisting</h1>
+        <h3>Javascript engine moves functions and variables to the top of the code
+            E.g.
+            <pre>
+                <code>
+                    b();
+
+                    console.log(a);
+                    
+                    var a = "a val";
+
+                    function b(){
+                        console.log('b function called');
+                    }
+
+                    //output
+                  ->  b function called
+                  -> undefined
+
+                </code>
+            </pre>
+            <p>here a and b both are called before they are declared. but still there is no error in console because they are moved to the top</p>
+        </h3>
+        <h3>
+            There are <b>two phases</b> which happen during execution;
+            <ul type="none">
+                <li>
+                    1. Creation phases
+                </li>
+                <li>
+                    2. Execution phase
+                </li>
+            </ul>
+            <ul>
+                <li> 1. During creation phase -> global object is setup within memory. </li>
+                <li> 2. Parser recognizes where we have created variables and functions. </li>
+                <li> 3. Set asides memory space for them </li>
+                <li> 4. Function is entirely placed in memory i.e. both function and logic inside it </li>
+                <li> 5. Whereas in case of variables it only sets memory space and sets value as undefined as it don't
+                    know what's it value will be until it is executed
+                    i.e. it assigns undefined placeholder for it </li>
+            </ul>
+
+            <b>All variables in javascript are initially set to undefined and functions are sitting in memory
+                entirely.</b>
+            </h5>
+
+            <p>if we use let instead of var then it will throw error instead of showing undefined and will say <br>
+                <b> ------------ Cannot access 'a' before initialization ---------</b></p>
+    </div>
+
+    <div class="bg">
+        <h1>Single threaded - synchronous execution</h1>
+        <h3>Single threaded : One command is executed at a time.</h3>
+        <h3>synchronous : one at a time and in order that it appears.</h3>
+    </div>
+
+    <div class="bg">
+        <h1>Invocation</h1>
+        <h3>Running a function { by using paranthesis() }. So when we say invoke the function we mean to say run the
+            function.</h3>
+
+        <b>So whenever we invoke a function a new execution context is created and put on the top of the stack. The
+            execution context on the top is always executed currently.</b>
+
+        <p> When function is executed it gets poped out from the stack.</p>
+        <div>
+            <img src="./img/function-invocation.gif" class="responsive" />
+        </div>
+    </div>
+
+    <div class="bg">
+        <h1>Scope Chain</h1>
+        <img src="./img/scope-chain.png" class="responsive">
+
+        <h3></h3>
+    </div>
+</body>
+
+</html>
