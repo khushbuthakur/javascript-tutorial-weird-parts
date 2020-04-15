@@ -155,14 +155,40 @@
         <h1>Scope Chain</h1>
         <img src="./img/scope-chain.png" class="responsive">
 
-        <h3></h3>
+        <h3>If we call same function twice, each will get it's own execution context.</h3>
     </div>
 
     <div class="bg">
-        <h1>Scope Chain</h1>
-        <img src="./img/scope-chain.png" class="responsive">
+        <h1>Scope</h1>
 
-        <h3></h3>
+        <h3>Where a variable is available in the code.</h3>
+        <h3><b>let</b> is block scope. It is only available inside the current function.</h3>
+        <pre>
+            <code>
+                function a(){
+                    let b = true;
+                    var c = false;
+                }
+            </code>
+        </pre>
+
+        <h3> <b>let is same as var.</b> It is declared, set to undefined and stored in the memory. <b>However we can't
+                use it until the line of code is actually run</b></h3>
+
+        <h4>In above example if we call b variable before it's declaration, it throws reference error.</h4>
+        <h3><u>Variable c is available outside <code>function a</code> but variable b is not available as it is declared
+                using let. And let is block scoped.</u></h3>
+        <h5>A block's in general defined by curly braces. Eg. if statement, for loop, function</h5>
+    </div>
+
+    <div class="bg">
+        <h1>Asynchronous callback</h1>
+        <h5>Since JavaScript is synchronous, how is this handling those asynchronous events? </h3>
+            <h3>JS first executes all the tasks in it's global execution task, in between if we do some <b>http request
+                    or click event</b>, it gets stacked in <b>Event queue</b>. When js's stack gets empty it
+                periodically looks into event queue and see if there is something. Then it runs all the items in event
+                queue synchronously. </h3>
+                <img src="./img/asynchronous.gif" class="responsive">
     </div>
 </body>
 
