@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./quiz.css">
+</head>
+
+<body>
+    <h4>What's the output?</h4>
+    <pre>
+            <span class="blue">var</span> a = 1,  b = 2, c = 3;
+
+            a = b = c;
+
+            console.<span class="violet">log</span>(a,b,c);
+</pre>
+
+    <ol>
+        <li><code>1,2,3</code></li>
+        <li><code>1,1,1</code></li>
+        <li><code>4,4,4</code></li>
+        <li><code>TypeError</code></li>
+    </ol>
+    <details>
+        <summary>
+            Answer
+        </summary>
+
+        <p>3. 4,4,4 </p>
+        <p>Explanation: assignment operator i.e. <b class="pink">=</b> has right to left precedence.</p>
+    </details>
+
+    <hr />
+
+
+    <h4>What's the output?</h4>
+    <pre>
+        function compareMembers(person1, person2 = person) {
+            if (person1 !== person2) {
+              console.log('Not the same!');
+            } else {
+              console.log('They are the same!');
+            }
+          }
+          
+          const person = { name: 'Lydia' };
+          
+          compareMembers(person);
+</pre>
+
+    <ol>
+        <li>Not the same!</li>
+        <li>They are the same!</li>
+        <li>ReferenceError</li>
+        <li>SyntaxError</li>
+    </ol>
+    <details>
+        <summary>
+            Answer
+        </summary>
+
+        <p>Answer: B</p>
+        <p>
+            Objects are passed by reference. When we check objects for strict equality (===), we're comparing their
+            references.
+
+            We set the default value for person2 equal to the person object, and passed the person object as the value
+            for person1.
+
+            This means that both values have a reference to the same spot in memory, thus they are equal.
+
+            The code block in the else statement gets run, and They are the same! gets logged.</p>
+    </details>
+    <hr />
+</body>
+
+</html>

@@ -188,8 +188,177 @@
                     or click event</b>, it gets stacked in <b>Event queue</b>. When js's stack gets empty it
                 periodically looks into event queue and see if there is something. Then it runs all the items in event
                 queue synchronously. </h3>
-                <img src="./img/asynchronous.gif" class="responsive">
+            <img src="./img/asynchronous.gif" class="responsive">
     </div>
+
+    <div class="bg">
+        <h1>Dynamic Typing</h1>
+        <h3>It figures out variable type on the fly.</h3>
+    </div>
+
+    <div class="bg">
+        <h1>Primitive Type</h1>
+        <h3>A <b>type of data that holds single value</b>. So object is primitive type as it holds key value pairs.</h3>
+        <h4>There are 6 primitive types:</h4>
+        <ol>
+            <li><b>Undefined</b> : Represents lack of existence. It is set by js engine sets variables to undefined
+                initially. (Leave this value for engine to set)</li>
+
+            <li><b>Null</b>: Represents lack of existence. Use this when we want to say somwthing does not exist or has
+                no value. (We i.e. code will use this value to indicate that this does not exist.)</li>
+            <li><b>Boolean</b>: True or false</li>
+            <li><b>Number</b>: Floating point number. Int,decimal all accepted in number.</li>
+            <li><b>String</b>: Sequence of characters in single '' of double "" quotes.</li>
+            <li><b>Symbol</b>: Once you create a symbol, its value is kept private and for internal use.</li>
+        </ol>
+    </div>
+
+    <div class="bg">
+        <h1>Operator</h1>
+        <h3>+ , - , * , / , >, <, etc </h3> <h3>This are as good as function which returns some value based on function
+                name(operator)</h3>
+        <h2><b>Infix notation</b>: The function name i.e. the operator sits between two parameters.
+        </h2>
+
+        <pre>
+            <code>
+                var a = 3 + 4;
+
+                function +(a,b){
+                    // return addition of a and b
+                };
+            </code>
+        </pre>
+
+        <p>So for calling this we would have to write something like</p>
+        <pre>
+            <code>
+                +(3,4)  without infix notation
+
+                3 + 4  -> infix notation (operator between two params)
+
+                +3 -> prefix notation (operator before param)
+
+                3+ -> postfix notation (operator after param)
+            </code>
+        </pre>
+        <p>This does not seem good. That's why all programming languages have infix notation. </p>
+    </div>
+
+    <div class="bg">
+        <h1>Operator Precedence</h1>
+        <h3>It means which operator function gets called first. For example <b>()</b> will be given more priority over
+            <b>*</b> which in turn will be called before <b>+</b></h3>
+        <p>There's complete list of order od precedence. <a href="./order-of-precedence.pdf" target="_blank"> Click here
+                to view.</a></p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
+            target="_blank">Get detailed explanation here.</a>
+        <pre>
+                    <code>
+                        var a = 3 + 4 * 5;
+                        console.log(a);
+
+                        // output -> 23
+
+                        var b = (3 + 4) * 5;
+                        console.log(b);
+
+                        // output -> 35
+                    </code>
+                </pre>
+    </div>
+
+
+    <div class="bg">
+        <h1>Associativity</h1>
+        <h3>If all operators / functions are same then in what order will the be called, i.e. from left-to-right or
+            right-to-left.</h3>
+        <h4>For e.g. ..*.., ../.., ..%.. all have same precedence. In such case this will be called from left-to-right.
+        </h4>
+
+        <pre>
+                <code>
+                        all have same precedence so called left to right
+
+                        var c = 2 * 10 / 4;
+
+                        console.log(c); // 5
+
+                        var d = 2 / 10 * 4;
+
+                        console.log(d); // 0.8
+                </code>
+            </pre>
+        <a href="./order-of-precedence.pdf" target="_blank"> Click here
+            to view.</a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
+            target="_blank">Get detailed explanation here.</a>
+    </div>
+
+    <div class="bg">
+        <h1>Coercion</h1>
+        <h3>Converting a value from one type to another. Since JS is Dynamically typed this happens a lot in js.</h3>
+        <pre>
+            <code>
+                var a = "1" + 2;
+                console.log(a); // 12
+
+                var b = 4 + "1" + 2;
+                console.log(b); // 412
+
+                var c = 3 + 5 + 9 + "2";
+                console.log(c); // 172
+
+                var d = '3' + 5 + 9 + "2";
+                console.log(d); // 3592
+            </code>
+        </pre>
+    </div>
+
+    <div class="bg">
+        <h1>Comparison</h1>
+        <h3>
+            <b>==</b> coerces the value for Comparison, i.e. they just check value whereas <b>===</b> does not coerce
+            value, checks value asa well as type;
+        </h3>
+        <h4>Strict Equality Comparison (===): used by Array.prototype.indexOf, Array.prototype.lastIndexOf, and
+            case-matching</h4>
+        <a href="./comparison.pdf" target="_blank">Refer this table to know more</a>
+        <a href="https://dorey.github.io/JavaScript-Equality-Table/unified/" target="_blank">Refer this table to know
+            more</a>
+        <a href="https://github.com/slikts/js-equality-game">Game for js equality check.</a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness"
+            target="_blank">In depth explanation</a>
+    </div>
+
+    <div class="bg">
+        <h1>Objects and dot notation</h1>
+        <h3>An object can have:
+            <br> <br>
+            1. primitive i.e. boolena, string, number
+            <br> <br>
+            2. key value pairs ->
+            <br> <br>
+            <code>
+                var a : { b : c { d : { e : 1}}};
+            </code>
+            <br> <br>
+            3. methods (functions)
+            <br>
+            <code>
+                var a = {
+                read : function(){
+                console.log('read');
+                }
+                }
+            </code>
+        </h3>
+
+        <h3>Bracket notation is also called computed member access -> it has highest precendence after ()</h3>
+
+        <h3> Dot notation is also called member access -> it has highest precendence after () </h3>
+    </div>
+
 </body>
 
 </html>
