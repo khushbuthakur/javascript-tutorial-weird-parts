@@ -68,6 +68,31 @@
             Here address, street, apartment, floor and number are all name and respective to right their values.
             Value can itself be another object.
         </h3>
+
+        <h3>All primitive types are poperties of object, whereas function in an object is called method.</h3>
+    </div>
+
+    <div class="bg">
+        <h1>OOP</h1>
+        <h3>When we write our code using objects to represent entities, that’s called object-oriented programming, in
+            short: “OOP”.</h3>
+
+        <pre>
+                <code>
+                    const obj = {
+                        name : 'Khushbu',
+                        sureName : 'Thakur'
+                    };
+
+
+                    function welcomeUser(){
+                        alert(`Hi there! Welcome to corona world.`);
+                    }
+
+                    obj.welcomeUser = welcomeUser;
+                    obj.welcomeUser();
+                </code>
+            </pre>
     </div>
 
 
@@ -179,6 +204,41 @@
         <h3><u>Variable c is available outside <code>function a</code> but variable b is not available as it is declared
                 using let. And let is block scoped.</u></h3>
         <h5>A block's in general defined by curly braces. Eg. if statement, for loop, function</h5>
+
+        <pre>
+            <code>
+
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    // here everytime we will get a different variable in memory as let is block scoped
+                    console.log(i)
+                }, 1);
+            }
+
+
+                /*
+                output
+                0
+                1
+                2
+                */
+
+            for (var j = 0; j < 3; j++) {
+                setTimeout(() => {
+                    // because of var j is defined only once,
+                     and after that it's value just keeps on updating
+                    console.log(j)
+                }, 1);
+            }
+
+            /*
+            output
+            3
+            3
+            3
+            */
+            </code>
+        </pre>
     </div>
 
     <div class="bg">
@@ -210,6 +270,7 @@
             <li><b>Number</b>: Floating point number. Int,decimal all accepted in number.</li>
             <li><b>String</b>: Sequence of characters in single '' of double "" quotes.</li>
             <li><b>Symbol</b>: Once you create a symbol, its value is kept private and for internal use.</li>
+            <li><b>BigInt</b></li>
         </ol>
     </div>
 
@@ -359,6 +420,264 @@
         <h3> Dot notation is also called member access -> it has highest precendence after () </h3>
     </div>
 
+    <div class="bg">
+        <h1>Namespace</h1>
+        <h3>In modern coding, a namespace is a container for variables and functions. It's just a holder, a container.
+            And typically it's used to keep variables and functions with the same name separate.</h3>
+
+        <h5>For.eg.</h5>
+
+        <pre>
+                <code>
+                    var greet = 'Hello';
+                    var greet = 'Hola';
+                    
+                    consloe.log(greet); //Hola
+
+                    var english = {
+                        greetings : {
+                            greet : 'Hello'
+                        }
+                    };
+
+                    var spanish = {
+                        greetings : {
+                            greet : 'Hola'
+                        }
+                    };
+
+                    consloe.log(english.greetings.greet); // Hello
+                    consloe.log(spanish.greetings.greet); // Hola
+
+                </code>
+            </pre>
+
+        <h3>
+            Before the greet variable was overrided and this can cause error.
+            Since JS does not have namespace. So we created fake name space i.e.
+            container for each language.</h3>
+
+        <h4>I've contained my variables, maybe my functions and methods, and
+            other objects, inside a container object, and that's all it's really doing.</h4>
+    </div>
+
+    <div class="bg">
+        <h1>JavaScript Object Notation (JSON)</h1>
+        <h3>It is a string of data looks just like object literal syntaxt ({ "a" : 2}). All properties are wrapped in
+            quotes.</h3>
+        <h3>JSON is more strict. It requires you to put properties in quotes. And does not allow to put values as
+            functions inside it. It is used to pass from client in browser to server.</h3>
+
+        <pre>
+            <code>
+
+                <!-- JSON -->
+                '{
+                    "firstName" : "Khushbu",
+                    "isPerson" : true
+                }'
+
+                <!-- Object -->
+                {
+                    firstName :  "Khushbu",,
+                    isPerson : true
+                }
+            </code>
+        </pre>
+    </div>
+
+    <div class="bg">
+        <h1>Expressions</h1>
+        <h3>Anything that returns a value</h3>
+
+
+        <pre>
+            <code>
+                        1 + 3
+                        // 3
+           </code>
+    </pre>
+    </div>
+
+    <div class="bg">
+        <h1>Function is an object in js.</h1>
+    </div>
+
+    <div class="bg">
+        <h1>Anonymous Function</h1>
+        <h3>It is a function that does not have name in it's name property. E.g.</h3>
+
+        <pre>
+            <code>
+                // anonymous function
+                var anonymousGreetFunction = function(){
+                        console.log('Hi user!');
+                }
+
+                anonymousGreetFunction();  // Invocation
+            </code>
+        </pre>
+
+        <h2>We cannot invoke anonymous function before it is declared, because functions are completely stores in memory
+            while hoisting but in case of variables they are stored in memory with undefined value. So if we call it
+            before it is executed we will get error. </h2>
+        <b>Error : Cannot access 'anonymousGreetFunction' before initialization</b>
+        <h3>Here function is not referenced by name but by a variable which knows where this function sit. As it has no
+            name it is called anonymous. This is function expression</h3>
+    </div>
+
+    <div class="bg">
+        <h1>Function expression</h1>
+        <pre>
+            function log(a) {
+                a();
+            }
+            
+            
+            log(function () {
+                console.log('Hi from log function')
+            });
+        </pre>
+
+        <h3>a function expression creates an object, a function object on the fly.
+            create function on fly, put some code in it and Pass it to another function which is then referenced by
+            argument and then execute it.</h3>
+    </div>
+
+    <div class="bg">
+        <h1>By value vs By Reference</h1>
+        <h3>All primitive types gets referenced by value. Whereas on case of non-primitives i.e. objects value gets
+            copied by reference.</h3>
+
+        <b>All primitive types are by value and all objects are by reference.</b>
+
+        <pre>
+            <code>
+                // by value (primitive)
+                var a = 3;
+                var b;
+                b = a;
+
+                /* here both a and b are 3, but there are two copies in memomry with value 3,
+                 so if we now change value of a it would not change value of b */
+
+                // by pointer - reference (non- primitive)
+                var c = { someVal : 1};
+                var d;
+                c = d;
+
+                // whereas here both c and d are pointing to same address in memory.
+        </code>
+    </pre>
+
+        <b>Refer value-vs-reference.js file for more details.</b>
+    </div>
+
+    <div class="bg">
+        <h1>Mutate : Something which can be changed. To change something.</h1>
+        <h1>Immutable : Something which cannot be changed</h1>
+    </div>
+
+    <div class="bg">
+        <h1>THIS</h1>
+        <h3><b>This</b> keyword usually refers to global object in browser. When execution context is created, a this
+            keyword is also created for it. </h3>
+        <a href="./js/this-keyword.js" target="_blank">Refer for notes here</a>
+    </div>
+
+    <div class="bg">
+        <h1>Array</h1>
+        <h3>Array is a collection of object and primitive types. It is Dynamically typed.</h3>
+
+        <a href="./js/array.js" target="_blank">Refer here for example</a>
+    </div>
+
+    <div class="bg">
+        <h1>IIFE : Immediately Invoked Function Expression</h1>
+        <h3>Function is called as soon as it is created.</h3>
+        <h3>IIFE, it needs to be an anonymous function, a function without a name, this is because IIFE needs to be
+            Invoked Immediately without invoking it a function name. We also need to wrap the anonymous function with
+            parenthesis, so the Javascript parser treats our anonymous function as a function expression.
+
+            <pre>
+                <code>
+                    (function() {
+                        console.log('hi from iife');
+                    }());
+                </code>
+            </pre>
+
+            A function expression is when you assign a function to a variable or property of an object. Anything that is
+            a Javascript expression, including function expression, returns a value.</h3>
+    </div>
+
+    <div class="bg">
+        <h1>Closures</h1>
+
+        <pre>
+            <code>
+                function greet(whatToSay){
+                    return function(name){
+                        console.log(`${whatToSay} ${name}`);
+                    }
+                }
+                
+                greet('Hello')('Khushbu');
+                
+                let greetings = greet('Namaste');
+                greetings('Chandler');
+                
+                
+                /*
+                output 
+                
+                Hello Khushbu
+                Namaste Chandler
+                
+                */
+            </code>
+        </pre>
+        <ol>
+            <li>We called <b>greet function</b> with paramter "Khushbu" / "Chandler". </li>
+            <li>An <b>exection context is created</b> for greet function</li>
+            <li>Memory space is created for <b>whatToSay</b></li>
+            <li>Now anonymous function is returned (which consoles 2 variables whatToSay & name)</li>
+            <li>After this the the execution context of <b>greet function</b> is <b>popped off the stack</b>.</li>
+            <li>So now -> greet('Hello') is replaced with function returned. To invoke this function we wrote <b>
+                    greet('Hello')('Khushbu'); / greetings('Chandler');</b></li>
+
+            <li>The inner function does not have it's own <b>whatToSay</b> variable. So following scope chain it goes to
+                outer function.</li>
+            <li>Javascript normally destorys all the variables defined inside function when it is popped out of context.
+                But in this cases like above the variable still lives.</li>
+            <li>The inner function still can reference to the all the vairables it need.</li>
+            <li>So our anonymous function call still reference to <b>whatToSay</b> variable.</li>
+
+            <li>The JavaScript engine will always make sure that whatever function I'm running,
+
+                that it will have access to the variables that it's supposed to have access to. </li>
+        </ol>
+
+        <h3>Greet is gone, the execution context is gone. <br>
+
+            But what's in memory for that execution context isn't and the <br>
+
+            JavaScript engine makes sure that my function can still go down the scope chain and find it. <br>
+
+            Even though it's not even on the execution stack anymore.
+            <br>
+            And this way we say that the execution context has closed in its outer variables, <br>
+
+            the variables that it would normally have reference to anyway. <br>
+
+            Even though those execution contexts are gone. <br>
+
+            And so this phenomenon, of it closing in all the variables <br>
+
+            that it's supposed to have access to, is called a closure.</h3>
+
+            <a href="./js/closure.js" target="_blank">Refer for exmaples</a>
+    </div>
 </body>
 
 </html>

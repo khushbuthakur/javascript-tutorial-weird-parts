@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator quiz</title>
+    <script>
+        var userName = prompt('Please enter your name', ""),
+            password;
+
+        if (userName === 'Admin') {
+            password = prompt('Hey admin, please enter password', "");
+
+
+            if (password == 'TheMaster') {
+                alert('Welcome admin! You have logged in successfully');
+            } else if (isNullOrEmpty(password)) {
+                alert('Canceled');
+            } else {
+                alert('Wrong password');
+            }
+
+        } else if (isNullOrEmpty(userName)) {
+            alert('Canceled');
+        } else {
+            alert('I don’t know you');
+        }
+
+        function isNullOrEmpty(val) {
+            if (val == undefined || val === null || val === "") return true;
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <p>
+        Write the code which asks for a login with prompt. <br><br>
+
+        If the visitor enters "Admin", then prompt for a password, if the input is an empty line or Esc – show
+        “Canceled”, if it’s another string – then show “I don’t know you”.<br><br>
+
+        The password is checked as follows:<br><br>
+
+        If it equals “TheMaster”, then show “Welcome!”,<br>
+        Another string – show “Wrong password”,<br>
+        For an empty string or cancelled input, show “Canceled”<br>
+        The schema:<br><br>
+    </p>
+
+    <h5>
+        Please use nested if blocks. Mind the overall readability of the code.<br><br>
+
+        Hint: passing an empty input to a prompt returns an empty string ''. Pressing ESC during a prompt returns null.
+    </h5>
+
+
+    <a href="https://javascript.info/logical-operators" target="_blank">https://javascript.info/logical-operators</a>
+</body>
+
+</html>

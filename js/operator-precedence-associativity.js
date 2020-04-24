@@ -8,13 +8,11 @@ console.log(b);
 
 // 35
 
-
 // all have same precedence so called left to right
 var c = 2 * 10 / 4;
 
 console.log(c);
 // 5
-
 
 // all have same precedence so called left to right
 var d = 2 / 10 * 4;
@@ -22,7 +20,6 @@ var d = 2 / 10 * 4;
 console.log(d);
 
 // 0.8
-
 
 var a = 0;
 
@@ -41,7 +38,6 @@ if (a || a === 0) {
     4. final answer will be true 
 */
 
-
 function greet(name) {
     name = name || '<Your name here>';
 
@@ -55,7 +51,6 @@ greet('Khushbu');
 Hi <Your name here>. Welcome to javascript weird parts!
 
 Hi Khushbu. Welcome to javascript weird parts!
-
 
 1. check if name is ther
 */
