@@ -19,7 +19,6 @@ Namaste Chandler
 */
 console.log('----------------------------------------------------------------------------------------------------------------------');
 
-
 function buildFunctions() {
     let arr = [];
     for (var i = 0; i < 3; i++) {
@@ -100,5 +99,98 @@ fs2[0]();
 fs2[1]();
 fs2[2]();
 
+console.log('----------------------------------------------------------------------------------------------------------------------');
+
+// private function by using closure
+console.log('Private function closure');
+
+const counter = (function () {
+    let privateCounter = 0;
+
+    function changeVal(val) {
+        privateCounter += val;
+    }
+
+    return {
+        increment: (val = 1) => {
+            changeVal(val);
+        },
+        decrement: () => {
+            changeVal(-1)
+        },
+        value: () => console.log(`value is now : ${privateCounter}`)
+    }
+}());
 
 
+counter.value();
+
+counter.increment(10);
+
+counter.value();
+
+counter.increment();
+counter.increment();
+
+counter.value();
+
+counter.decrement();
+counter.value();
+
+//counter.changeVal(2);  // error -> counter.changeVal is not a function
+
+
+/*
+In the above example, increment(), decrement() and value() becomes public function because they are included in the return object, 
+whereas changeVal() function becomes private function because it is not returned and only used internally by increment() and decrement().
+
+*/
+
+
+console.log('----------------------------------------------------------------------------------------------------------------------');
+
+/*
+Write a function that would allow you to do this.
+
+var addSix = createBase(6);
+addSix(10); // returns 16
+addSix(21); // returns 27
+
+*/
+
+
+// solution
+
+function createBase(baseNumber) {
+    return function (n) {
+        console.log(baseNumber + n);
+    }
+}
+
+
+var addSix = createBase(6);
+addSix(10); // returns 16
+addSix(21); // returns 27
+
+console.log('----------------------------------------------------------------------------------------------------------------------');
+
+/*
+
+Write a function that will loop through a list of integers and print the index of each element after a 3 second delay.
+
+*/
+
+(function () {
+
+    function printNum(num) {
+        console.log(num);
+    }
+
+    for (var i = 0; i < 3; i++) {
+        setTimeout(printNum, 3000 * (i + 1), i);
+       
+        // setTimeout((i_local) => {
+        //     console.log(i_local);
+        // }, 3000, i)
+    }
+}());

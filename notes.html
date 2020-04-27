@@ -501,6 +501,44 @@
 
     <div class="bg">
         <h1>Function is an object in js.</h1>
+        <h1>They are called <b>first class functions</b>. Because JS functions can be asigned to
+            variables, passed as an argument, returned from other function. They can even reside inside another object.
+        </h1>
+        <pre>
+            <code>
+                // assigned to variables
+                const getName = function(name){
+                    console.log(name);
+                }
+
+                // passed as an argument
+                const logName = (name) =>{
+                    name();
+                }
+
+                logName(function(){
+                    console.log('some random name');
+                });
+
+                // returned from another function
+
+                function getFullName(firstName){
+                    return function(lastName){
+                        console.log(`${firstName} ${lastName}`);
+                    }
+                }
+
+                getFullName('John')('Doe');
+
+                // can reside inside objects
+
+                const person = {
+                    name : 'John Doe',
+                    getName : () => this.name
+                };
+            </code>
+        </pre>
+        <a href="./js/functions.js">Refer for examples</a>
     </div>
 
     <div class="bg">
@@ -676,7 +714,329 @@
 
             that it's supposed to have access to, is called a closure.</h3>
 
-            <a href="./js/closure.js" target="_blank">Refer for exmaples</a>
+        <a href="./js/closure.js" target="_blank">Refer for exmaples</a>
+
+        <h3>Closure is useful in hiding implementation detail in JavaScript. In other words, it can be useful to create
+            private variables or functions.</h3>
+
+        <h3>Definition: A JavaScript closure is when an inner function has access to its outer enclosing function's
+            variables and properties. <br>
+            In other words, closure is created when a child function keep the environment of the parent scope even after
+            the parent function has already executed
+        </h3>
+    </div>
+
+    <div class="bg">
+        <h1>All functions in javscript gets access to three methods : apply, bind and call.</h1>
+    </div>
+
+    <div class="bg">
+        <h1>Bind</h1>
+        <h3>Bind method : The bind() method creates a new function that, when called, has its this keyword set to the
+            provided value, with a given sequence of arguments preceding any provided when the new function is called.
+        </h3>
+        <h3>let boundFunc = func.bind(thisArg[, arg1[, arg2[, ...argN]]])</h3>
+
+        <h3>Bind basically lets us control what a function's this will be.</h3>
+        <b>Bind creates a copy of function</b>
+        <p>Below logName function's this was global object, by binding it to person object now it is person object.</p>
+        <pre>
+            <code>
+                const person = {
+                    firstName : "Khushbu",
+                    lastName : "Thakur",
+                    fullName : function(){
+                        return `${this.firstName} ${this.lastName}`
+                    }
+                }
+
+
+                let logName = function(){
+                    console.log(this.fullName());
+                }.bind(person);
+                
+                logName();
+
+                // output : Khushbu Thakur 
+            </code>
+        </pre>
+        <a href="./js/call-apply-bind.js" target="_blank">Refer this</a>
+    </div>
+
+    <div class="bg">
+        <h1>Call</h1>
+        <h3>Calls a method of an object, substituting another object for the current object. <b>Call does not create
+                copy
+                of the function but instead executes it.</b></h3>
+        <h3>let callFunc = func.call(thisArg[, arg1[, arg2[, ...argN]]])</h3>
+        <pre>
+            <code>
+
+                const person = {
+                    firstName: "Khushbu",
+                    lastName: "Thakur",
+                    fullName: function () {
+                        return `${this.firstName} ${this.lastName}`
+                    }
+                }
+
+                let logName = function (language) {
+                    console.log(this.fullName());
+                    console.log(language);
+                    console.log('-----------');
+                };
+
+                logName.call(person, 'hindi');
+            </code>
+        </pre>
+        <a href="./js/call-apply-bind.js" target="_blank">Refer this</a>
+    </div>
+
+    <div class="bg">
+        <h1>Apply</h1>
+        <h3>Calls the function, substituting the specified object for the this value of the function, and the specified
+            array for the arguments of the function. <b>Apply does not create
+                copy
+                of the function but instead executes it.</b>
+
+            <b>Apply is same as call, the only difference is that it needs arguments in an array</b></h3>
+        <h3>let callFunc = func.call(thisArg, [ arg1, arg2, ...argN])</h3>
+        <pre>
+            <code>
+
+                const person = {
+                    firstName: "Khushbu",
+                    lastName: "Thakur",
+                    fullName: function () {
+                        return `${this.firstName} ${this.lastName}`
+                    }
+                }
+
+                let logName = function (language) {
+                    console.log(this.fullName());
+                    console.log(language);
+                    console.log('-----------');
+                };
+
+                logName.apply(person, ['marathi']);
+            </code>
+        </pre>
+        <a href="./js/call-apply-bind.js" target="_blank">Refer this</a>
+    </div>
+
+    <div class="bg">
+        <h1>Currying</h1>
+        <h3><b>Take a function, create copy of it and bind it with some default values. It is called currying.</b></h3>
+        <b>Function currying: creating a copy of a function but with some preset parameters.</b>
+
+        <pre>
+            <code>
+                const multiply = function (a, b) {
+                    return a * b;
+                }
+                
+                console.log(multiply(2, 4)); // 8
+                
+                
+                // here new copy of multiply is created with default paramter value of a as 2; 
+                // so when we will call multiplyByTwo, a will always be 2 and will pass value of b;
+                
+                const multiplyByTwo = multiply.bind(this, 2);
+                
+                // here 10 is value of b
+                console.log(multiplyByTwo(10)); //20
+                
+                
+                const multiplyByFour = multiply.bind(this, 4);
+                
+                console.log(multiplyByFour(20));
+                // 80
+                
+                
+                /*
+                we created copy of multiply function
+                then set a default value
+                
+                this is called currying
+                */ 
+            </code>
+        </pre>
+    </div>
+
+    <div class="bg">
+        <h1>Inheritance</h1>
+        <h3>One object gets access to properties and methods of another object.</h3>
+    </div>
+
+    <div class="bg">
+        <h1>Prototypes</h1>
+        <h3>In JavaScript objects ave a special hidden property [[Prototype]]. It is either null or references to other
+            object.</h3>
+        <h3>If we want some property from object and it is missing over there, then it automatically goes down the
+            prototype chain and finds it in [[Prototype]].</h3>
+
+        <b>The prototype is a little bit “magical”. When we want to read a property from object, and it’s missing,
+            JavaScript automatically takes it from the prototype. In programming, such thing is called “prototypal
+            inheritance”. </b>
+        <br>
+
+        <b>The property [[Prototype]] is internal and hidden, but there are many ways to set it.
+            One of them is to use the special name __proto__</b>
+        <br>
+        <img src="./img/prototype.png" class="responsive" />
+
+        <ol>
+            <li>We wanted prop1 from obj. Since obj has it we directly get from obj.</li>
+            <li>We now want prop2 from obj. But obj does not have it, so it goes down to it's __proto__ and finds it
+                over there and returns if it has.</li>
+
+            <li>Now __proto__ of obj can have another __proto__ too.</li>
+            <li><b>So going from obj to __proto__ to __proto__ to find properties is called propotype chain.</b></li>
+            <li>For prop3, obj goes to __proto__. It does not have it. So this __proto__ goes to its __proto__ and
+                returns it from there.</li>
+        </ol>
+
+        <b>__proto__ is a historical getter/setter for [[Prototype]]</b>
+
+        <h3>In below example when we look from some property or method in john or janice object, if it is missing over
+            there then it automatically inherits it from <b>person object</b>.
+        </h3>
+        <pre>
+            <code>
+                const person = {
+                    firstName: 'default',
+                    lastName: 'default',
+                    getFullName() {
+                        return `${this.firstName} ${this.lastName}`
+                    }
+                };
+                
+                console.log(person.getFullName());
+                
+                // default default
+                
+                // only for demo purpose, do not do this ever. Affects performance.
+                
+                const john = {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                };
+                
+                // error john.getFullName is not a function
+                // console.log(john.getFullName());
+                
+                /* since john does not have it's own getFullName property 
+                we are trying to get it from person object.*/
+                john.__proto__ = person;
+                
+                console.log(john.getFullName());
+                
+                // John Doe
+                
+                
+                const janice = {
+                    firstName: 'Janice'
+                };
+                
+                janice.__proto__ = person;
+                
+                console.log(janice.getFullName());
+                
+                // Janice default
+            </code>
+        </pre>
+
+
+        <h3> <b>person</b> is prototype of john and janice. <b>john and janice</b> prototypically inheitrs from person.
+        </h3>
+    </div>
+
+    <div class="bg">
+        <h1>[[Prototype]] && __proto__</h1>
+        <h3>There can be only one [[Prototype]]. An object may not inherit from two others. </h3>
+        <h3>__proto__ can only be an object or null.</h3>
+        <h3>__proto__ references can't go in circles. For example above, as john's __proto__ referes to person. Person's
+            __proto__ can't again reference to john. </h3>
+
+        <h3>Methods are shared across objects via prototype but not states. Refer below example.</h3>
+
+        <pre>
+                <code>
+                    const animals = {
+                        name : 'animal',
+                        walk() {
+                            if (!this.isSleeping) {
+                                return true
+                            }
+                        },
+                        sleep() {
+                            return this.isSleeping = true
+                        }
+                    }
+                    
+                    const rabbit = {
+                        name: 'Rabbie',
+                        __proto__: animals,
+                    };
+                    
+                    const snake = {
+                        name: 'snaky',
+                        __proto__: animals
+                    }
+                    
+                    // modifies isSleeping only in rabit object
+                    rabbit.sleep();
+                    
+                    console.log(rabbit.isSleeping); // true
+                    console.log(animals.isSleeping); // undefined (no such property in the prototype)
+                    console.log(snake.isSleeping); // undefined (no such property in the prototype)
+                    
+                    // this is in prototype always refers to the object before dot.
+                    
+                    console.log(snake.name);
+                </code>
+            </pre>
+
+        <b>No matter where the method is found: in an object or its prototype. In a method call, this is always the
+            object before the dot.</b>
+        <h3>snake.name uses snake as this and not animals</h3>
+
+
+        <a href="./js/prototype.js" target="_blank">Refer for more details</a>
+
+    </div>
+
+    <div class="bg">
+        <h1>Everything in JavaScript that is not primitve type is an object and has __proto__.</h1>
+        <b>Object is the base prototype</b>
+        <h3>Every non-primitive have prototype except the base object.</h3>
+        <h3>Array, function and objects all have __proto__</h3>
+
+        <b>__proto__ of object : </b>
+
+        <img src="./img/obj_proto_.png" class="responsive">
+
+        <br>
+
+
+
+        <b>__proto__ of array : </b>
+
+        <h3>__proto__ of __proto__ of an array or function is base object __proto__.</h3>
+
+        <img src="./img/array_proto_.png" class="">
+
+        <br>
+
+        <br>
+
+        <b>__proto__ of function : </b>
+
+        <img src="./img/function_proto_.png" class="">
+
+        <h3>__proto__ of __proto__ of a function is base object __proto__.</h3>
+
+        <img src="./img/func_proto_proto_.png" class="">
     </div>
 </body>
 
